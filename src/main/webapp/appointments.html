@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Hospital Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div>
+                <h1>Appointments</h1>
+                <p>Book and cancel patient appointments</p>
+            </div>
+            <button class="btn btn-primary" id="addBtn">+ Book Appointment</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>All appointments</h2>
+                <input type="search" class="search" id="search" placeholder="Search appointments...">
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th><th>Patient</th><th>Doctor</th><th>Date</th>
+                        <th>Time</th><th>Reason</th><th>Status</th><th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="appointmentRows">
+                    <tr><td colspan="8" class="empty">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Popup form to book an appointment -->
+<dialog id="appointmentDialog">
+    <form id="appointmentForm">
+        <h2>Book Appointment</h2>
+        <div class="form-grid">
+            <div class="field full">
+                <label for="patientId">Patient *</label>
+                <select id="patientId" name="patientId" required></select>
+            </div>
+            <div class="field full">
+                <label for="doctorId">Doctor *</label>
+                <select id="doctorId" name="doctorId" required></select>
+            </div>
+            <div class="field">
+                <label for="date">Date *</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="field">
+                <label for="time">Time *</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="field full">
+                <label for="reason">Reason</label>
+                <input type="text" id="reason" name="reason" maxlength="255" placeholder="e.g. Fever, regular check-up">
+            </div>
+        </div>
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-light" id="cancelBtn">Close</button>
+            <button type="submit" class="btn btn-primary">Book</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="js/common.js"></script>
+<script src="js/appointments.js"></script>
+</body>
+</html>

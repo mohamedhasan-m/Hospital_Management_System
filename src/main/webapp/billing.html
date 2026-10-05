@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - Hospital Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+        <div class="page-header">
+            <div>
+                <h1>Billing</h1>
+                <p>Create patient bills and view bill history</p>
+            </div>
+        </div>
+
+        <!-- Create bill -->
+        <div class="card">
+            <div class="card-header"><h2>Create new bill</h2></div>
+            <div class="card-body">
+                <form id="billForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="patientId">Patient *</label>
+                            <select id="patientId" name="patientId" required></select>
+                        </div>
+                        <div class="field">
+                            <label for="doctorId">Doctor (fills the consultation fee)</label>
+                            <select id="doctorId"></select>
+                        </div>
+                        <div class="field">
+                            <label for="consultationFee">Consultation fee (&#8377;)</label>
+                            <input type="number" id="consultationFee" name="consultationFee" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="field">
+                            <label for="medicineCharges">Medicine charges (&#8377;)</label>
+                            <input type="number" id="medicineCharges" name="medicineCharges" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="field">
+                            <label for="roomCharges">Room charges (&#8377;)</label>
+                            <input type="number" id="roomCharges" name="roomCharges" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="field">
+                            <label for="otherCharges">Other charges (&#8377;)</label>
+                            <input type="number" id="otherCharges" name="otherCharges" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="field full">
+                            <div class="total-box">
+                                <span>Total amount</span>
+                                <span class="amount" id="totalAmount">&#8377;0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dialog-actions">
+                        <button type="submit" class="btn btn-primary">Create Bill</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bill history -->
+        <div class="card">
+            <div class="card-header">
+                <h2>All bills</h2>
+                <input type="search" class="search" id="search" placeholder="Search bills...">
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Bill #</th><th>Date</th><th>Patient</th>
+                        <th class="num">Consultation</th><th class="num">Medicine</th>
+                        <th class="num">Room</th><th class="num">Other</th><th class="num">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="billRows">
+                    <tr><td colspan="8" class="empty">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/billing.js"></script>
+</body>
+</html>
